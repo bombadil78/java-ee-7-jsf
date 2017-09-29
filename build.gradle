@@ -6,6 +6,7 @@ repositories {
 
 dependencies {
     testImplementation 'junit:junit:4.12'
+    compile 'org.primefaces:primefaces:6.1'
     providedCompile 'javax:javaee-api:7.0'
 }
 

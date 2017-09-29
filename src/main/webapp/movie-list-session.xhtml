@@ -15,5 +15,14 @@
         <h:commandButton value="Search" action="#{sessionScopedMovieListBean.search}" />
     </h:form>
 
+    <h:dataTable value="#{sessionScopedMovieListBean.movieList}" var="movie">
+        <h:column>
+            <h:outputText value="#{movie.id}" />
+        </h:column>
+        <h:column>
+            <h:outputText value="#{movie.name}" />
+        </h:column>
+    </h:dataTable>
+
 </h:body>
 </html>

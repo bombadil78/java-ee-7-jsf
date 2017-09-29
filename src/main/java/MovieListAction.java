@@ -8,4 +8,5 @@ public interface MovieListAction {
 
     String getBeanIdentity();
 
+    List<Movie> getMovieList();
 }

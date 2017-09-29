@@ -1,10 +1,19 @@
+import javax.inject.Inject;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public abstract class AbstractMovieListBean implements MovieListAction {
 
+    @Inject
+    private MovieDao movieDao;
     private String searchString;
+    private List<Movie> movieList;
 
     @Override
     public void search() {
-        System.out.println(String.format("searchString = %s", searchString));
+        movieList = movieDao.findAll().stream()
+                .filter(m -> m.getName().startsWith(searchString))
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -20,5 +29,10 @@ public abstract class AbstractMovieListBean implements MovieListAction {
     @Override
     public void setSearchString(String searchString) {
         this.searchString = searchString;
+    }
+
+    @Override
+    public List<Movie> getMovieList() {
+        return this.movieList;
     }
 }

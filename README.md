@@ -39,3 +39,11 @@ The backing bean must be annotated with *@javax.inject.Named* and any of the *ja
 - *@Dependent*
 - *@ConversationScoped*
 
+### Data Tables
+A *<h:dataTable>*-Tag is used to represent tables. The tag offers the following attributes:
+- value: EL-expression of the data, e.g. *#{someBackingBean.someList}*
+- var: Name of variable for iterating over the table content
+- CSS styling attributes: styleClass, headerClass or rowClasses
+
+Nested inside the tag is *<h:column>* as the table data content
+

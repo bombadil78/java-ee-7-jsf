@@ -15,5 +15,14 @@
         <h:commandButton value="Search" action="#{requestScopedMovieListBean.search}" />
     </h:form>
 
+    <h:dataTable value="#{requestScopedMovieListBean.movieList}" var="movie">
+        <h:column>
+            <h:outputText value="#{movie.id}" />
+        </h:column>
+        <h:column>
+            <h:outputText value="#{movie.name}" />
+        </h:column>
+    </h:dataTable>
+
 </h:body>
 </html>

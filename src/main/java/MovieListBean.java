@@ -7,7 +7,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Named("movieListBean")
 @SessionScoped
@@ -19,7 +18,7 @@ public class MovieListBean implements MovieListAction, Serializable {
     private MovieDao movieDao;
     private List<Genre> allGenres = new ArrayList<>();
     private MovieQuery movieQuery;
-    private List<Movie> movieList = new ArrayList<>();
+    private MovieLazyDataModel dataModel;
 
     @PostConstruct
     private void init() {
@@ -27,13 +26,17 @@ public class MovieListBean implements MovieListAction, Serializable {
         movieQuery.setGenre(Genre.ACTION);
         movieQuery.setNamePattern("");
         allGenres.addAll(Arrays.asList(Genre.values()));
-        search();
+
+        dataModel = new MovieLazyDataModel();
     }
 
     private void search() {
-        movieList = movieDao.find(movieQuery)
-                .stream()
-                .collect(Collectors.toList());
+        System.out.println("search() called");
+    }
+
+    @Override
+    public MovieLazyDataModel getLazyModel() {
+        return dataModel;
     }
 
     @Override
@@ -44,11 +47,6 @@ public class MovieListBean implements MovieListAction, Serializable {
     @Override
     public MovieQuery getMovieQuery() {
         return movieQuery;
-    }
-
-    @Override
-    public List<Movie> getMovieList() {
-        return this.movieList;
     }
 
     @Override

@@ -2,8 +2,8 @@ import java.util.List;
 
 public interface MovieListAction {
 
+    MovieLazyDataModel getLazyModel();
     List<Genre> getAllGenres();
     MovieQuery getMovieQuery();
-    List<Movie> getMovieList();
     void updateView();
 }

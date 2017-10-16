@@ -48,10 +48,13 @@ A *<h:dataTable>*-Tag is used to represent tables. The tag offers the following 
 Nested inside the tag is *<h:column>* as the table data content which references the variable, e.g. *#{myVariable.someProperty}*
 
 ### Templating
-There are three tags that are used for basic templating:
+There are several tags that are used for templating:
 - *ui:insert name="someContent"*: Placeholder in a template file
-- *ui:composition template="someTemplate.xhtml"*: Reference to a placeholder in a web page
+- *ui:composition template="someTemplate.xhtml"*: Reference to template file, can contain *ui:param*
 - *ui:define name="someContent"*: Content to be injected into the *ui:insert*
-- *ui:include*: Includes another XHTML file
+- *ui:include*: Includes another XHTML file, can contain *ui:param*
+- *ui:param*: Replaces a parameter in the referenced XHTML file of the outer element (*ui:composition* or *ui:insert*)
+
+ 
 
 

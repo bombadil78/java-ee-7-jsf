@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Hello World</title>
+</h:head>
+<h:body>
+    <ui:debug />
+
+    <h:form>
+        <div class="ui-fluid">
+            <p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-10" layout="grid" styleClass="ui-panelgrid-blank">
+                <p:outputLabel for="genre" value="Genre:" />
+                <p:selectOneMenu id="genre" value="#{movieListBean.movieQuery.genre}">
+                    <f:selectItem value="#{null}" itemLabel="ALL" />
+                    <f:selectItems value="#{movieListBean.allGenres}" var="genre" itemValue="#{genre}" />
+                </p:selectOneMenu>
+
+                <p:outputLabel for="namePattern" value="Name:" />
+                <p:inputText id="namePattern" value="#{movieListBean.movieQuery.namePattern}" />
+
+                <p:commandButton value="Search" update="movieTable" actionListener="#{movieListBean.updateView()}" />
+            </p:panelGrid>
+        </div>
+    </h:form>
+
+    <p:dataTable
+            id="movieTable"
+            value="#{movieListBean.movieList}"
+            var="movie"
+            paginator="true"
+            paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+            rowsPerPageTemplate="5,10,15">
+        <p:column headerText="ID" sortBy="#{movie.id}">
+            <h:outputText value="#{movie.id}" />
+        </p:column>
+        <p:column headerText="Name" sortBy="#{movie.name}">
+            <h:outputText value="#{movie.name}" />
+        </p:column>
+        <p:column headerText="Genre" sortBy="#{movie.genre}">
+            <h:outputText value="#{movie.genre}" />
+        </p:column>
+    </p:dataTable>
+
+</h:body>
+</html>

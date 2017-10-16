@@ -1,18 +1,37 @@
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Movie {
 
-    private final int id;
-    private final String name;
+    @Id
+    @GeneratedValue
+    private Long id;
+    private String name;
+    private Genre genre;
 
-    public Movie(int id, String name) {
-        this.id = id;
-        this.name = name;
+    public Long getId() {
+        return id;
     }
 
-    public int getId() {
-        return id;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Genre getGenre() {
+        return genre;
+    }
+
+    public void setGenre(Genre genre) {
+        this.genre = genre;
     }
 }

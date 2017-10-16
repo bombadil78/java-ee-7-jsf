@@ -2,6 +2,6 @@ import java.util.List;
 
 public interface MovieDao {
 
-    List<Movie> findAll();
+    List<Movie> find(MovieQuery movieQuery);
 
 }

@@ -30,12 +30,14 @@
     </h:form>
 
     <p:dataTable
-            id="movieTable"
-            value="#{movieListBean.movieList}"
             var="movie"
+            value="#{movieListBean.lazyModel}"
             paginator="true"
-            paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-            rowsPerPageTemplate="5,10,15">
+            rows="3"
+            paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+            rowsPerPageTemplate="1,2,3,4,5"
+            id="movieTable"
+            lazy="true">
         <p:column headerText="ID" sortBy="#{movie.id}">
             <h:outputText value="#{movie.id}" />
         </p:column>

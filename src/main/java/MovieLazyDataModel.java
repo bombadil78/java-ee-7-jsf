@@ -12,25 +12,10 @@ public class MovieLazyDataModel extends LazyDataModel<Movie> implements Serializ
 
     private final List<Movie> data = new ArrayList<>();
 
-    public MovieLazyDataModel() {
-        Movie m1 = new Movie();
-        m1.setId(1L);
-        m1.setName("m1");
-        m1.setGenre(Genre.ACTION);
+    public MovieLazyDataModel(List<Movie> movies) {
+        data.clear();
+        data.addAll(movies);
 
-        Movie m2 = new Movie();
-        m2.setId(2L);
-        m2.setName("m2");
-        m2.setGenre(Genre.HORROR);
-
-        Movie m3 = new Movie();
-        m3.setId(3L);
-        m3.setName("m3");
-        m3.setGenre(Genre.COMEDY);
-
-        data.add(m1);
-        data.add(m2);
-        data.add(m3);
     }
 
     @Override

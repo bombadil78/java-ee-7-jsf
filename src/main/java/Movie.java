@@ -34,4 +34,18 @@ public class Movie {
     public void setGenre(Genre genre) {
         this.genre = genre;
     }
+
+    public static Movie createMovie(Long id, String name) {
+        Movie m = new Movie();
+        m.setId(id);
+        m.setName(name);
+        m.setGenre(Genre.ACTION);
+        return m;
+    }
+
+    public static Movie createMovieWithGenre(Long id, String name, Genre genre) {
+        Movie m = Movie.createMovie(id, name);
+        m.setGenre(genre);
+        return m;
+    }
 }

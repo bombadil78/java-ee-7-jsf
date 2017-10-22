@@ -4,6 +4,8 @@ public interface MovieListAction {
 
     MovieLazyDataModel getLazyModel();
     List<Genre> getAllGenres();
-    MovieQuery getMovieQuery();
-    void updateView();
+
+    MovieFilter getMovieFilter();
+    void search();
+    void deleteMovie(Movie movie);
 }

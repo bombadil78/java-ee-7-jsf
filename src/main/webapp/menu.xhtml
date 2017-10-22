@@ -1,9 +1,15 @@
-<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<div xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+     xmlns:f="http://java.sun.com/jsf/core"
+     xmlns:p="http://primefaces.org/ui">
     <div class="menu">
-        <ul>
-            <li>foo</li>
-            <li>bar</li>
-            <li>foobar</li>
-        </ul>
+        <p:toolbar>
+            <f:facet name="left">
+                <p:button outcome="movie-list.xhtml" value="List movies" />
+                <p:button outcome="movie-detail.xhtml" value="New movie" />
+            </f:facet>
+            <f:facet name="right">
+
+            </f:facet>
+        </p:toolbar>
     </div>
-</ui:composition>
+</div>

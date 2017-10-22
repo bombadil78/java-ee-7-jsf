@@ -3,7 +3,6 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,11 +24,11 @@ public class MovieDaoImpl implements MovieDao, Serializable {
     }
 
     @Override
-    public List<Movie> find(MovieQuery movieQuery) {
+    public List<Movie> find(MovieFilter movieFilter) {
         return movies
                 .stream()
-                .filter(x -> x.getName() != null && x.getName().startsWith(movieQuery.getNamePattern()))
-                .filter(x -> x.getGenre() != null && x.getGenre().equals(movieQuery.getGenre()))
+                .filter(x -> x.getName() != null && x.getName().startsWith(movieFilter.getNamePattern()))
+                .filter(x -> x.getGenre() != null && x.getGenre().equals(movieFilter.getGenre()))
                 .collect(Collectors.toList());
     }
 }

@@ -1,4 +1,4 @@
-public class MovieQuery {
+public final class MovieFilter {
 
     private String namePattern;
     private Genre genre;
@@ -17,5 +17,10 @@ public class MovieQuery {
 
     public void setGenre(Genre genre) {
         this.genre = genre;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Filter with genre = %s and name = %s", genre, namePattern);
     }
 }

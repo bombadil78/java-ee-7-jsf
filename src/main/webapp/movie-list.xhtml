@@ -47,8 +47,14 @@
                             ajax="false"
                             value="Delete"
                             action="#{movieListBean.deleteMovie(movie)}">
-                        <!-- <p:confirm header="Delete movie" message="Do you really want to delete the movie?" /> -->
+                        <p:confirm header="Delete movie" message="Do you really want to delete the movie?" />
                     </p:commandButton>
+                    <p:button
+                            includeViewParams="true"
+                            value="Edit"
+                            outcome="movie-detail.xhtml">
+                        <f:param name="selectedId" value="#{movie.id}" />
+                    </p:button>
                 </h:form>
             </p:column>
         </p:dataTable>

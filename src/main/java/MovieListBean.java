@@ -79,6 +79,5 @@ public class MovieListBean implements MovieListAction, Serializable {
                     new FacesMessage("Unable to delete")
             );
         }
-
     }
 }

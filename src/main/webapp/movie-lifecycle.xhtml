@@ -1,0 +1,24 @@
+<ui:composition
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      template="template.xhtml">
+    <ui:define name="content">
+        <p:messages />
+        <p:panel header="JSF Lifecycle">
+            <h:form>
+                <p:panelGrid columns="4" layout="grid">
+                    <p:outputLabel for="movie" value="Movie as string" />
+                    <p:inputText id="movie" value="#{movieLifecycleBean.movie}">
+                        <f:converter converterId="movieConverter" />
+                        <f:validator validatorId="movieValidator" />
+                    </p:inputText>
+                </p:panelGrid>
+
+                <p:commandButton actionListener="submit" value="Submit" />
+            </h:form>
+        </p:panel>
+    </ui:define>
+</ui:composition>

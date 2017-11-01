@@ -32,6 +32,10 @@ public class MovieService implements Serializable {
         data.add(m3);
     }
 
+    public Movie findById(Long id) {
+        return data.stream().filter(x -> x.getId().equals(id)).findFirst().orElse(null);
+    }
+
     public List<Movie> findAll() {
         return data;
     }

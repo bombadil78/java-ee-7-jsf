@@ -4,17 +4,51 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 <ui:composition template="template.xhtml">
     <ui:define name="content">
-        <h:outputText value="ID" />
-        <h:outputText value="#{movieDetail.selected.id}" />
+        <f:metadata>
+            <f:viewParam name="selectedId" value="#{movieDetailBean.selectedId}" converter="javax.faces.Long" />
+            <f:event type="preRenderView" listener="#{movieDetailBean.preRenderView}" />
+        </f:metadata>
+        <h:form>
+            <p:messages />
+            <p:panel header="Validation methods">
+            <p:panelGrid columns="6" columnClasses="ui-grid-col-6" layout="grid" styleClass="ui-panelgrid-blank">
+                <p:outputLabel for="name1" value="Name #1" />
+                <p:inputText
+                        id="name1"
+                        validatorMessage="Bean validation is used"
+                        value="#{movieDetailBean.selectedMovie.name}">
+                    <f:validateBean />
+                </p:inputText>
 
-        <h:outputText value="Name" />
-        <h:outputText value="#{movieDetail.selected.name}" />
+                <p:outputLabel for="name2" value="Name #2" />
+                <p:inputText
+                    id="name2"
+                    value="#{movieDetailBean.selectedMovie.name}">
+                    <f:validateRegex pattern="[a-zA-Z]*" />
+                </p:inputText>
 
-        <h:outputText value="Genre" />
-        <h:outputText value="#{movieDetail.selected.genre}" />
+                <p:outputLabel for="name3" value="Name #3" />
+                <p:inputText
+                    id="name3"
+                    value="#{movieDetailBean.selectedMovie.name}">
+                    <f:validator validatorId="movieValidator" />
+                </p:inputText>
+
+                <p:outputLabel for="genre" value="Genre" />
+                <p:selectOneMenu id="genre" value="#{movieDetailBean.selectedMovie.genre}">
+                    <f:selectItems value="#{movieDetailBean.allGenres}" />
+                </p:selectOneMenu>
+            </p:panelGrid>
+            </p:panel>
+            <p:commandButton
+                    value="submit"
+                    action="#{movieDetailBean.submit()}"
+                    ajax="false" />
+        </h:form>
     </ui:define>
 </ui:composition>
 </html>

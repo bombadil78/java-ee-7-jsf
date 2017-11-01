@@ -1,6 +1,8 @@
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 @Entity
 public class Movie {
@@ -8,7 +10,12 @@ public class Movie {
     @Id
     @GeneratedValue
     private Long id;
+
+    @NotNull(message = "Name is required")
+    @Pattern(regexp = "[a-zA-Z]*")
     private String name;
+
+    @NotNull(message = "Genre is required")
     private Genre genre;
 
     public Long getId() {

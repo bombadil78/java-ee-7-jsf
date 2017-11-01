@@ -3,5 +3,15 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
     http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
-  
+    <lifecycle>
+        <phase-listener>LifeCycleListener</phase-listener>
+    </lifecycle>
+    <navigation-rule>
+        <from-view-id>/movie-detail.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{movieDetailBean.submit}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/movie-list.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>
